@@ -56,6 +56,7 @@ function renderCart() {
         btn.addEventListener("click", (e) => {
             const idx = Number(e.currentTarget.dataset.index);
             cart.splice(idx, 1);
+            saveCart();
             renderCart();
         });
     });
@@ -68,9 +69,15 @@ function renderCart() {
 // Функция расчёта суммы корзины (стрелочная)
 const calculateTotal = () => cart.reduce((sum, item) => sum + item.price, 0);
 
+// Сохранение корзины в LocalStorage
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 // Добавление товара в корзину
 const addToCart = (name, price) => {
     cart.push({ name, price });
+    saveCart();
     renderCart();
 };
 
@@ -99,6 +106,7 @@ function initPayButton() {
         const total = calculateTotal();
         alert(`Оплата прошла успешно!\nСумма: ${formatPrice(total)} ₽\nСпасибо за покупку!`);
         cart = [];
+        saveCart();
         renderCart();
     });
 }
@@ -132,6 +140,10 @@ function initFilterButtons() {
 
 // Запуск после загрузки DOM
 document.addEventListener("DOMContentLoaded", () => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+        cart = JSON.parse(savedCart);
+    }
     initAddToCartButtons();
     initPayButton();
     initFilterButtons();
