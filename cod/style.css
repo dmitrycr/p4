@@ -1,0 +1,38 @@
+/* === Страница «Товар каталога» === */
+
+/* Заголовки секций товара */
+.product-heading {
+    color: black;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: rgb(200, 220, 245);
+}
+
+/* Краткое описание товара */
+.short-description {
+    color: rgb(70, 100, 140);
+    font-size: 14px;
+    font-style: italic;
+    line-height: 16px;
+}
+
+/* Подробное описание товара */
+.detailed-description {
+    color: rgb(40, 55, 75);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+
+/* Список характеристик товара */
+.characteristics li {
+    font-size: 15px;
+    color: rgb(30, 60, 100);
+}
+
+/* Картинки в каталоге */
+.product-img {
+    height: 200px;
+    object-fit: cover;
+}
